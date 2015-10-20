@@ -1,7 +1,10 @@
 angular.module('reddit')
 
-.controller('articlesController', ['$scope', function($scope) {
-  $scope.article = {
-    title: 'The Book of Disquiet'
-  }
+.controller('articlesController', ['$scope', 'apiService', function($scope, apiService) {
+
+  apiService.index()
+  .then(function(articles) {
+    $scope.articles = articles;
+  });
+
 }]);
